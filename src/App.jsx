@@ -2,10 +2,13 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import MovieList from './components/MovieList'
 import SongList from './components/SongList'
-import { reset } from './store'
+import { reset } from './store/index'
 
 function App() {
   const dispatch = useDispatch() // Hook to dispatch actions to the Redux store
+
+  const listMovies = useSelector(state => state.movies)
+  const listSongs = useSelector(state => state.songs)
 
   // Function to handle the reset action for both playlists
   const handleReset = () => {
@@ -13,7 +16,7 @@ function App() {
   }
   return (
     <>
-      <button onClick={handleReset}>Reset both Playlist</button>
+      <button onClick={handleReset} disabled={!(listMovies.length || listSongs.length)}>Reset both Playlist</button>
       <MovieList/>
       <SongList/>
     </>
