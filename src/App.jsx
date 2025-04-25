@@ -5,10 +5,11 @@ import SongList from './components/SongList'
 import { reset } from './store'
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() // Hook to dispatch actions to the Redux store
+
+  // Function to handle the reset action for both playlists
   const handleReset = () => {
-    dispatch(reset())
-    // dispatch(resetSong())
+    dispatch(reset()) // Dispatch the global reset action
   }
   return (
     <>
